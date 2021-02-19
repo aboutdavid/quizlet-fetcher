@@ -62,13 +62,13 @@ It's that simple. It should output something like this:
 
 ### Browser
 
-You can use this in the browser too, you just need to run it through a bundler like [webpack](https://webpack.js.org/) or [browserify](https://github.com/browserify/browserify).
+You can use this in the browser too, you just need to run it through a bundler like [webpack](https://webpack.js.org/) or [browserify](https://github.com/browserify/browserify). If you need it as a CDN, use [browserify-as-a-service](https://wzrd.in/)
 
-**Note:** You can't use the index.js file as it uses a http request module only available in node.js.
+**Note:** You can't use the index.js file as it uses a http request module only available in node.js. You will need to use `parser.js`, but implement the browser fetch API manually.
 
 ```js
 window
   .fetch("https://quizlet.com/344590556/red-panda-diagram/")
-  .then((response) => response.json())
-  .then((data) => console.log(data));
+  .then((response) => response.text())
+  .then((data) => console.log(window.QuizletFetcher(data)));
 ```
