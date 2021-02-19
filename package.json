@@ -16,6 +16,15 @@
     "sync-request": "^6.1.0"
   },
   "bin": {
-    "quizlet-fetcher": "./cli.js"
-  }
+    "quizlet-fetcher": "cli.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aboutDavid/quizlet-fetcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aboutDavid/quizlet-fetcher/issues"
+  },
+  "homepage": "https://github.com/aboutDavid/quizlet-fetcher#readme"
 }
