@@ -5,9 +5,10 @@ Scrapper for [Quizlet](https://quizlet.com) sets (a.k.a flashcards) to download 
 ## CLI
 
 CLI Flags:
-`-s, --slug`: The slug that will be fetched. For example, if you use `344590556/red-panda-diagram`, then the URL [quizlet.com/344590556/red-panda-diagram/](https://quizlet.com/344590556/red-panda-diagram/) will be fetched.
-`-f, --format`: The format that will be outputted by quizlet-fetcher. Can either be `anki` or `json`
-`-o, --output`: The Output file that quizlet-fetcher will save to.
+
+- `-s, --slug`: The slug that will be fetched. For example, if you use `344590556/red-panda-diagram`, then the URL [quizlet.com/344590556/red-panda-diagram/](https://quizlet.com/344590556/red-panda-diagram/) will be fetched.
+- `-f, --format`: The format that will be outputted by quizlet-fetcher. Can either be `anki` or `json`
+- `-o, --output`: The Output file that quizlet-fetcher will save to.
 
 Example:
 
