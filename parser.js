@@ -1,4 +1,4 @@
-module.exports = function (html) {
+function a(html) {
   if (!html || typeof html !== "string") {
     throw new Error("Please provide a string of HTML!");
   }
@@ -28,4 +28,9 @@ module.exports = function (html) {
   }
   obj.cards = cards;
   return obj;
-};
+}
+if (typeof window === "undefined") {
+  module.exports = a;
+} else {
+  window.QuizletFetcher = a;
+}
