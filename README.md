@@ -18,6 +18,8 @@ quizlet-fetcher -s 344590556/red-panda-diagram -f anki -o flashcards.apkg
 
 ## API
 
+### Node.js
+
 There is a API for quizlet-fetcher if you want to download Quizlet cards programmatically.
 
 ```js
@@ -56,4 +58,17 @@ It's that simple. It should output something like this:
     }
   ]
 }
+```
+
+### Browser
+
+You can use this in the browser too, you just need to run it through a bundler like [webpack](https://webpack.js.org/) or [browserify](https://github.com/browserify/browserify).
+
+**Note:** You can't use the index.js file as it uses a http request module only available in node.js.
+
+```js
+window
+  .fetch("https://quizlet.com/344590556/red-panda-diagram/")
+  .then((response) => response.json())
+  .then((data) => console.log(data));
 ```
