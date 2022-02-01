@@ -21,7 +21,7 @@ program.version(require(__dirname + "/package.json").version);
 program
   .option(
     "-s, --slug [slug]",
-    "The slug for the quizlet. Example: 344590556/red-panda-diagram)"
+    "The slug for the quizlet. Example: 64068932/a-long-way-gone-flash-cards)"
   )
   .option("-f, --format [format]", "The format. Can be either 'anki' or 'json'")
   .option(
@@ -34,7 +34,7 @@ program.parse(process.argv);
 var opts = program.opts();
 if (!opts.slug) {
   console.error(
-    "Please provide a slug! Examples: 344590556/red-panda-diagram, 64068932/a-long-way-gone-flash-cards"
+    "Please provide a slug! Examples: 64068932/a-long-way-gone-flash-cards"
   );
   process.exit(0);
 }
