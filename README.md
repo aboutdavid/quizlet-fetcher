@@ -1,74 +1,73 @@
 # quizlet-fetcher
 
-Scrapper for [Quizlet](https://quizlet.com) sets (a.k.a flashcards) to download them or something else
-
-## CLI
-
-CLI Flags:
-
-- `-s, --slug`: The slug that will be fetched. For example, if you use `344590556/red-panda-diagram`, then the URL [quizlet.com/344590556/red-panda-diagram/](https://quizlet.com/344590556/red-panda-diagram/) will be fetched.
-- `-f, --format`: The format that will be outputted by quizlet-fetcher. Can either be `anki` or `json`
-- `-o, --output`: The Output file that quizlet-fetcher will save to.
-
-Example:
-
-```bash
-quizlet-fetcher -s 344590556/red-panda-diagram -f anki -o flashcards.apkg
-```
+Scraper for [Quizlet](https://quizlet.com) sets (flashcards) to download them
 
 ## API
 
 ### Node.js
 
 There is a API for quizlet-fetcher if you want to download Quizlet cards programmatically.
-
+```
+npm install quizlet-fetcher
+```
 ```js
-require("quizlet-fetcher")("344590556/red-panda-diagram");
+var quizlet = require("quizlet-fetcher")
+quizlet("649192341/basic-japanese-phrases-flash-cards");
 ```
 
 It's that simple. It should output something like this:
 
 ```json
 {
-  "title": "red panda",
-  "cards": [
-    {
-      "term": "Nose",
-      "definition": "Snifter"
-    },
-    {
-      "term": "Eyes",
-      "definition": "Cute Dots"
-    },
-    {
-      "term": "Tongue",
-      "definition": "Lick Lick"
-    },
-    {
-      "term": "WUTTT",
-      "definition": "humannnnnn?????????"
-    },
-    {
-      "term": "Ears",
-      "definition": "listener"
-    },
-    {
-      "term": "Fur",
-      "definition": "FLUFFY!"
-    }
-  ]
+   "title":"Basic Japanese Phrases",
+   "description":"Basic phrases from romaji to English",
+   "cards":[
+      {
+         "term":"お げんき です か",
+         "definition":"How are you?"
+      },
+      {
+         "term":"わたし は げんき です, ありがとう",
+         "definition":"I'm fine, thanks."
+      },
+      {
+         "term":"さいきん どう です か",
+         "definition":"What's new?"
+      },
+      {
+         "term":"かわらない です",
+         "definition":"Nothing much."
+      },
+      {
+         "term":"すみません",
+         "definition":"Excuse me"
+      },
+      {
+         "term":"わたし と いっしょ に きて ください",
+         "definition":"Come with me."
+      },
+      {
+         "term":"あなた は えいご/にほんご を はなします か",
+         "definition":"Do you speak English/Japanese?"
+      }
+   ]
 }
 ```
 
 ### Browser
 
-You can use this in the browser too, you just need to run it through a bundler like [webpack](https://webpack.js.org/) or [browserify](https://github.com/browserify/browserify). If you need it as a CDN, use [browserify-as-a-service](https://wzrd.in/)
+There is a folder named `dist`. It contains a browserified version of the parser. Use the function `QuizletFetcher(html)` to parse in the browser after including one of the files from the `dist` folder.
 
-**Note:** You can't use the index.js file as it uses a http request module only available in node.js. You will need to use `parser.js`, but implement the browser fetch API manually.
+You can compile it yourself using this command
+```
+browserify parser.js -o dist/parser.js
+```
 
-```js
-window
-  .fetch("https://quizlet.com/344590556/red-panda-diagram/")
-  .then((response) => response.text())
-  .then((data) => console.log(window.QuizletFetcher(data)));
+Example:
+```html
+<script src="dist/parser.min.js"></script>
+<script>
+var html = document.body.innerHTML
+console.log(QuizletFetcher(html)) // prints JSON, see example above
+</script>
 ```
