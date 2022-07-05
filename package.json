@@ -1,25 +1,21 @@
 {
   "name": "quizlet-fetcher",
-  "version": "1.0.3",
-  "description": "Fetch quizlet cards by scrapping the quizlet website.",
+  "version": "1.1.0",
+  "description": "Fetch quizlet cards by scraping the quizlet website.",
   "main": "index.js",
-  "browser": "index.js",
+  "browser": "dist/parser.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test"
   },
-  "keywords": [],
+  "keywords": ["quizlet", "scraper", "flashcards"],
   "author": "aboutDavid",
   "license": "MIT",
   "dependencies": {
-    "anki-apkg-export": "^4.0.3",
     "cheerio": "^1.0.0-rc.5",
-    "commander": "^7.1.0",
-    "sync-request": "^6.1.0"
   },
-  "bin": {
-    "quizlet-fetcher": "cli.js"
+  "devDependencies": {
+    "browserify": "^17.0.0",
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aboutDavid/quizlet-fetcher.git"
