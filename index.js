@@ -1,27 +1,36 @@
-const request = require("sync-request");
-const cheerio = require("cheerio");
-function isEven(value) {
-  if (value % 2 == 0) return true;
-  else return false;
-}
+function a(html) {
+  if (!html || typeof html !== "string") {
+    throw new Error("Please provide a string of HTML!");
+  }
+  const cheerio = require("cheerio");
+  function isEven(value) {
+    if (value % 2 == 0) return true;
+    else return false;
+  }
+  const $ = cheerio.load(html);
 
-module.exports = function (slug, options) {
-  if (!slug) {
-    throw new Error("Please provide a slug.");
+  var obj = {};
+  obj.title = $("title").text().replace(" Flashcards | Quizlet", "");
+  if ($(".SetPageHeader-description")[0]) {
+    obj.description = $(".SetPageHeader-description")[0].children[0].data;
   }
-  if (!options) {
-    options = {
-      headers: {
-        "user-agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36",
-      },
-    };
+  var cards = [];
+  var i = 0;
+  var y = 0;
+  while (i < $(".TermText").length) {
+    if (isEven(i)) {
+      cards.push({ term: $(".TermText")[i].children[0].data });
+    } else {
+      cards[y].definition = $(".TermText")[i].children[0].data;
+      y++;
+    }
+    i++;
   }
-  var res = request("GET", `https://quizlet.com/${slug}`, options);
-  if (res.statusCode >= 300) {
-    throw new Error(
-      `Failed to fetch the quizlet cards. Status code: ${res.statusCode}`
-    );
-  }
-  return require("./parser.js")(res.getBody("utf8"));
-};
+  obj.cards = cards;
+  return obj;
+}
+if (typeof window === "undefined") {
+  module.exports = a;
+} else {
+  window.QuizletFetcher = a;
+}
