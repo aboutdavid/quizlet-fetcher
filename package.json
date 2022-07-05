@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "description": "Fetch quizlet cards by scrapping the quizlet website.",
   "main": "index.js",
-  "browser": "parser.js",
+  "browser": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
