@@ -7,14 +7,18 @@
   "scripts": {
     "test": "node test"
   },
-  "keywords": ["quizlet", "scraper", "flashcards"],
+  "keywords": [
+    "quizlet",
+    "scraper",
+    "flashcards"
+  ],
   "author": "aboutDavid",
   "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.5",
+    "cheerio": "^1.0.0-rc.5"
   },
   "devDependencies": {
-    "browserify": "^17.0.0",
+    "browserify": "^17.0.0"
   },
   "repository": {
     "type": "git",
