@@ -1,36 +1,43 @@
-function a(html) {
-  if (!html || typeof html !== "string") {
-    throw new Error("Please provide a string of HTML!");
-  }
-  const cheerio = require("cheerio");
-  function isEven(value) {
-    if (value % 2 == 0) return true;
-    else return false;
-  }
-  const $ = cheerio.load(html);
-
-  var obj = {};
-  obj.title = $("title").text().replace(" Flashcards | Quizlet", "");
-  if ($(".SetPageHeader-description")[0]) {
-    obj.description = $(".SetPageHeader-description")[0].children[0].data;
-  }
-  var cards = [];
-  var i = 0;
-  var y = 0;
-  while (i < $(".TermText").length) {
-    if (isEven(i)) {
-      cards.push({ term: $(".TermText")[i].children[0].data });
-    } else {
-      cards[y].definition = $(".TermText")[i].children[0].data;
-      y++;
+const cheerio = require("cheerio");
+class QuizletFetcher {
+  constructor(html) {
+    if (!html || typeof html !== "string") {
+      throw new Error("Please provide a string of HTML!");
     }
-    i++;
+    const $ = cheerio.load(html)
+    this.$ = $
+    var obj = {};
+    obj.title = $("title").text().replace(" Flashcards | Quizlet", "");
+    console.log($("title").text())
+    if ($(".SetPageHeader-description")[0]) {
+      obj.description = $(".SetPageHeader-description")[0].children[0].data;
+    }
+    var cards = [];
+    var i = 0;
+    var y = 0;
+    while (i < $(".TermText").length) {
+      if (i % 2 == 0) {
+        cards.push({ term: $(".TermText")[i].children[0].data });
+      } else {
+        cards[y].definition = $(".TermText")[i].children[0].data;
+        y++;
+      }
+      i++;
+    }
+    obj.cards = cards;
+    this.html = html
+    
+    this.json = obj
   }
-  obj.cards = cards;
-  return obj;
+  getJSON() {
+    return this.json
+  }
+
 }
+
+
 if (typeof window === "undefined") {
-  module.exports = a;
+  module.exports = QuizletFetcher;
 } else {
-  window.QuizletFetcher = a;
+  window.QuizletFetcher = QuizletFetcher;
 }

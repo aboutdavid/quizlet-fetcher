@@ -1,18 +1,27 @@
 # quizlet-fetcher
 
-Scraper for [Quizlet](https://quizlet.com) sets (flashcards) to download them
+Scraper for [Quizlet](https://quizlet.com) sets (flashcards) to download them.
 
 ## API
 
 ### Node.js
 
-There is a API for quizlet-fetcher if you want to download Quizlet cards programmatically.
-```
+Note: functionality to download cards **was removed** in 1.1.0. You'll need to provide the webpage yourself.
+
+Note: As of now, you'll need to be authenticated to get all of the cards. This is because Quizlet will only provide the full set to authenticated users.
+
+```bash
 npm install quizlet-fetcher
+# or
+yarn add quizlet-fetcher
 ```
 ```js
-var quizlet = require("quizlet-fetcher")
-quizlet("649192341/basic-japanese-phrases-flash-cards");
+const QuizletFetcher = require("quizlet-fetcher")
+const quizlet = new QuizletFetcher(html) 
+
+// Get the cards as JSON
+// See below for format
+quizlet.getJSON()
 ```
 
 It's that simple. It should output something like this:

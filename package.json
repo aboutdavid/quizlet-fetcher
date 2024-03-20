@@ -1,6 +1,6 @@
 {
   "name": "quizlet-fetcher",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Fetch quizlet cards by scraping the quizlet website.",
   "main": "index.js",
   "browser": "dist/parser.min.js",
@@ -12,7 +12,7 @@
     "scraper",
     "flashcards"
   ],
-  "author": "aboutDavid",
+  "author": "aboutdavid",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.5"
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aboutDavid/quizlet-fetcher.git"
+    "url": "git+https://github.com/aboutdavid/quizlet-fetcher.git"
   },
   "bugs": {
-    "url": "https://github.com/aboutDavid/quizlet-fetcher/issues"
+    "url": "https://github.com/aboutdavid/quizlet-fetcher/issues"
   },
-  "homepage": "https://github.com/aboutDavid/quizlet-fetcher#readme"
+  "homepage": "https://github.com/aboutdavid/quizlet-fetcher#readme"
 }

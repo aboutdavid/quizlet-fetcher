@@ -1,7 +1,6 @@
-// i searched up "long quizlet", 93 terms!
-var a = require("./index.js")(
-  "https://quizlet.com/64068932/a-long-way-gone-flash-cards/"
-);
+const QuizletFetcher = require("./index.js")
+const fs = require("fs")
+const a = new QuizletFetcher(fs.readFileSync("./test.html", "utf8")).getJSON()
 console.log(`Name of set: ${a.title}`);
 console.log(`Description of set: ${a.description || "None."}`);
 console.log(`Cards in set: ${a.cards.length}`);
