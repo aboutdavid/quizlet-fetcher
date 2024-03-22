@@ -17,3 +17,8 @@ console.log(`Definitions covered in this set:\n`);
 console.log("==================================");
 a.cards.forEach((t, i) => console.log(`${i + 1}. ${t.definition}`));
 console.log("==================================");
+
+console.log(`Images in in this set:\n`);
+console.log("==================================");
+a.cards.filter(a=>a.image).forEach((t, i) => console.log(`${i + 1}. Proxy: ${t.image}\nRegular: ${t.sourceImage}`));
+console.log("==================================");

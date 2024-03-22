@@ -32,7 +32,10 @@ class QuizletFetcher {
       var term = $(".SetPageTerm-image")[i].attribs.alt.replace("Image: ", "")
       var src = $(".SetPageTerm-image")[i].attribs.src
       var card = cards.find(card => card.term === term);
-      if (card) card.image = src;
+      if (card) {
+        card.image = src;
+        card.sourceImage = src.replace(/^https:\/\/.*?\/(https?:\/\/.*)$/, "$1")
+      }
       i++
     }
 
@@ -43,7 +46,7 @@ class QuizletFetcher {
   }
    /**
  * Get the JSON of a Quizlet set
- * @return {{title: string, description: string, author: string, cards: {term: string, definition: string, image: string}[]}} The Quizlet data.
+ * @return {{title: string, description: string, author: string, cards: {term: string, definition: string, image: string, sourceImage: string}[]}} The Quizlet data.
  */
   getJSON() {
     return this.json

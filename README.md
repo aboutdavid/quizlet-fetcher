@@ -52,21 +52,25 @@ It's that simple. It should output something like this:
       {
          "term":"すみません",
          "definition":"Excuse me",
-         "image": "https://example.com/3826462.jpg"
+         "image": "https://quizlet.com/cdn-cgi/image/f=auto,fit=cover,h=100,onerror=redirect,w=120/https://example.com/3826462.jpg",
+         "sourceImage": "https://example.com/3826462.jpg"
       },
       {
          "term":"わたし と いっしょ に きて ください",
          "definition":"Come with me.",
-         "image": "https://example.com/381937.jpg"
+         "image": "https://quizlet.com/cdn-cgi/image/f=auto,fit=cover,h=100,onerror=redirect,w=120/https://example.com/381937.jpg",
+         "sourceImage": "https://example.com/381937.jpg"
       },
       {
          "term":"あなた は えいご/にほんご を はなします か",
          "definition":"Do you speak English/Japanese?",
-         "image": "https://example.com/1767281.jpg"
+         "image": "https://quizlet.com/cdn-cgi/image/f=auto,fit=cover,h=100,onerror=redirect,w=120/https://example.com/1767281.jpg",
+         "sourceImage": "https://example.com/1767281.jpg"
       }
    ]
 }
 ```
+Note: the `image` field is a proxy image, usually from the CDN. `sourceImage` is the real image. You'll most likely want to use `sourceImage`
 
 ### Browser
 
