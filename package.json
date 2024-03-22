@@ -1,10 +1,10 @@
 {
   "name": "quizlet-fetcher",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Fetch quizlet cards by scraping the quizlet website.",
   "main": "index.js",
-  "browser": "dist/parser.min.js",
   "scripts": {
+    "build": "npx browserify index.js -o dist/index.js && npx uglify-js --compress -o dist/index.min.js -- dist/index.js",
     "test": "node test"
   },
   "keywords": [
@@ -15,7 +15,7 @@
   "author": "aboutdavid",
   "license": "MIT",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.5"
+    "cheerio": "1.0.0-rc.12"
   },
   "devDependencies": {
     "browserify": "^17.0.0"

@@ -15,6 +15,7 @@ npm install quizlet-fetcher
 # or
 yarn add quizlet-fetcher
 ```
+
 ```js
 const QuizletFetcher = require("quizlet-fetcher")
 const quizlet = new QuizletFetcher(html) 
@@ -30,6 +31,7 @@ It's that simple. It should output something like this:
 {
    "title":"Basic Japanese Phrases",
    "description":"Basic phrases from romaji to English",
+   "author": "user123456",
    "cards":[
       {
          "term":"お げんき です か",
@@ -49,15 +51,18 @@ It's that simple. It should output something like this:
       },
       {
          "term":"すみません",
-         "definition":"Excuse me"
+         "definition":"Excuse me",
+         "image": "https://example.com/3826462.jpg"
       },
       {
          "term":"わたし と いっしょ に きて ください",
-         "definition":"Come with me."
+         "definition":"Come with me.",
+         "image": "https://example.com/381937.jpg"
       },
       {
          "term":"あなた は えいご/にほんご を はなします か",
-         "definition":"Do you speak English/Japanese?"
+         "definition":"Do you speak English/Japanese?",
+         "image": "https://example.com/1767281.jpg"
       }
    ]
 }
@@ -65,18 +70,28 @@ It's that simple. It should output something like this:
 
 ### Browser
 
-There is a folder named `dist`. It contains a browserified version of the parser. Use the function `QuizletFetcher(html)` to parse in the browser after including one of the files from the `dist` folder.
+There is a folder named `dist`. It contains a browserified version of the parser. You can follow the above example, replacing "require" with `window.QuizletFetcher`.
 
 You can compile it yourself using this command
 ```
-browserify parser.js -o dist/parser.js
+npx browserify index.js -o dist/index.js
+npx uglify-js --compress -o dist/index.min.js -- dist/index.js
 ```
 
 Example:
 ```html
-<script src="dist/parser.min.js"></script>
+<script src="dist/index.min.js"></script>
 <script>
 var html = document.body.innerHTML
 console.log(QuizletFetcher(html)) // prints JSON, see example above
 </script>
 ```
+
+### Changelog
+
+
+- `1.0.0` - Inital version
+- `1.0.1 to 1.0.3` - Small bug fixes
+- `1.1.0` - Dropped CLI and automatic fetching due to Cloudflare issues
+- `2.0.0` - Moved to a class based system + did refactoring
+- `2.1.0` - \[Current\] Added image + author metadata. Added JSDoc types as well.
