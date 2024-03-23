@@ -91,6 +91,12 @@ console.log(QuizletFetcher(html)) // prints JSON, see example above
 </script>
 ```
 
+### Projects using this
+
+Feel free to add your project here if you are using it.
+
+- [quizlet2anki](https://github.com/aboutdavid/quizlet2anki) ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/quizlet-to-anki/), Chrome coming soon), an in-browser Quizlet flashcard deck to Anki flashcard deck converter.
+
 ### Changelog
 
 
