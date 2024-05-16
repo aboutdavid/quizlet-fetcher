@@ -12,7 +12,7 @@ class QuizletFetcher {
     const $ = cheerio.load(html)
     this.$ = $
     var obj = {};
-    obj.title = $("title").text().replace(" Flashcards | Quizlet", "");
+    obj.title = $("title").text().replace(" Flashcards | Quizlet", "").replace("Back ButtonSearch IconFilter Icon", "");
     if ($(".SetPageHeader-description")[0]) obj.description = $(".SetPageHeader-description")[0].children[0].data
     obj.author = $(".UserLink-username--typography-subheading-3").text()
     var cards = [];
