@@ -13,7 +13,7 @@ class QuizletFetcher {
     const $ = cheerio.load(html)
     this.$ = $
     var obj = {};
-    obj.title = $("title").text().replace(" Flashcards | Quizlet", "");
+    obj.title = $("title").text().replace(" Flashcards | Quizlet", "").replace("Back ButtonSearch IconFilter Icon", "");
     if ($(".SetPageHeader-description")[0]) obj.description = $(".SetPageHeader-description")[0].children[0].data
     obj.author = $(".UserLink-username--typography-subheading-3").text()
     var cards = [];
@@ -33,7 +33,10 @@ class QuizletFetcher {
       var term = $(".SetPageTerm-image")[i].attribs.alt.replace("Image: ", "")
       var src = $(".SetPageTerm-image")[i].attribs.src
       var card = cards.find(card => card.term === term);
-      if (card) card.image = src;
+      if (card) {
+        card.image = src;
+        card.sourceImage = src.replace(/^https:\/\/.*?\/(https?:\/\/.*)$/, "$1")
+      }
       i++
     }
 
@@ -42,16 +45,10 @@ class QuizletFetcher {
 
     this.json = obj
   }
-  /**
-   * Get the JSON representation of the Quizlet data.
-   * @return {Object} The Quizlet data.
-   * @property {string} title - The title of the Quizlet set.
-   * @property {string} description - The description of the Quizlet set.
-   * @property {Array} cards - The cards in the Quizlet set.
-   * @property {string} cards.term - The term of the card.
-   * @property {string} cards.definition - The definition of the term.
-   * @property {string} cards.image - The image associated with the term.
-   */
+   /**
+ * Get the JSON of a Quizlet set
+ * @return {{title: string, description: string, author: string, cards: {term: string, definition: string, image: string, sourceImage: string}[]}} The Quizlet data.
+ */
   getJSON() {
     return this.json
   }
