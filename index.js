@@ -1,5 +1,6 @@
-const cheerio = require("cheerio");
-class QuizletFetcher {
+import cheerio from "cheerio"
+
+export default class QuizletFetcher {
   /**
    * Create a Quizlet Parser
    * @param {string} html - The HTML string to parse.
@@ -52,11 +53,4 @@ class QuizletFetcher {
     return this.json
   }
 
-}
-
-
-if (typeof window === "undefined") {
-  module.exports = QuizletFetcher;
-} else {
-  window.QuizletFetcher = QuizletFetcher;
 }
