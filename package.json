@@ -11,7 +11,7 @@
   "exports": {
     ".": {
       "require": "./dist/index.min.cjs",
-      "import": "./dist/index.min.js"
+      "import": "./dist/index.min.mjs"
     }
   },
   "keywords": [
