@@ -30,6 +30,10 @@ await esbuild.build({
   bundle: true,
   outdir: 'dist',
   format: "iife",
+  globalName: "QuizletFetcher",
+  footer: {
+    js: "QuizletFetcher = QuizletFetcher.default"
+  },
 	minify: true,
   outExtension: { '.js': '.min.iife.js' }
 })
