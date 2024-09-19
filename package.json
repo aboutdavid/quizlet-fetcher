@@ -1,7 +1,7 @@
 {
   "name": "quizlet-fetcher",
-  "version": "2.1.2",
-  "description": "Fetch quizlet cards by scraping the quizlet website.",
+  "version": "3.0.0",
+  "description": "HTML parser for Quizlet flashcards decks",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
@@ -17,7 +17,9 @@
   "keywords": [
     "quizlet",
     "scraper",
-    "flashcards"
+    "flashcards",
+    "html",
+    "parser"
   ],
   "author": "aboutdavid",
   "license": "LGPL-3.0-or-later",

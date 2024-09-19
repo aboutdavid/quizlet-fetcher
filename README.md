@@ -17,7 +17,11 @@ yarn add quizlet-fetcher
 ```
 
 ```js
-const QuizletFetcher = require("quizlet-fetcher")
+// ESM
+import QuizletFetcher from "quizlet-fetcher"
+// CJS
+const QuizletFetcher = require("quizlet-fetcher").default
+
 const quizlet = new QuizletFetcher(html) 
 
 // Get the cards as JSON
@@ -74,20 +78,19 @@ Note: the `image` field is a proxy image, usually from the CDN. `sourceImage` is
 
 ### Browser
 
-There is a folder named `dist`. It contains a browserified version of the parser. You can follow the above example, replacing "require" with `window.QuizletFetcher`.
+There is a folder named `dist`. It contains a browserified version of the parser. You can follow the above example, replacing `require` or `import` with `window.QuizletFetcher`.
 
-You can compile it yourself using this command
+You can compile it yourself using this command:
 ```
-npx browserify index.js -o dist/index.js
-npx uglify-js --compress -o dist/index.min.js -- dist/index.js
+npm build
 ```
 
 Example:
 ```html
-<script src="dist/index.min.js"></script>
+<script src="dist/index.min.iife.js"></script>
 <script>
 var html = document.body.innerHTML
-console.log(QuizletFetcher(html)) // prints JSON, see example above
+console.log(window.QuizletFetcher(html)) // prints JSON, see example above
 </script>
 ```
 
@@ -95,7 +98,7 @@ console.log(QuizletFetcher(html)) // prints JSON, see example above
 
 Feel free to add your project here if you are using it.
 
-- [quizlet2anki](https://github.com/aboutdavid/quizlet2anki) ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/quizlet-to-anki/), Chrome coming soon), an in-browser Quizlet flashcard deck to Anki flashcard deck converter.
+- [quizlet2anki](https://github.com/aboutdavid/quizlet2anki) ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/quizlet-to-anki/), [Chrome](https://chromewebstore.google.com/detail/quizlet-to-anki/cgeebapijlelpceccbapfkpoaolbiccm)), an in-browser Quizlet flashcard deck to Anki flashcard deck converter.
 
 ### Changelog
 
@@ -104,4 +107,5 @@ Feel free to add your project here if you are using it.
 - `1.0.1 to 1.0.3` - Small bug fixes
 - `1.1.0` - Dropped CLI and automatic fetching due to Cloudflare issues
 - `2.0.0` - Moved to a class based system + did refactoring
-- `2.1.0` - \[Current\] Added image + author metadata. Added JSDoc types as well.
+- `2.1.0` - Added image + author metadata. Added JSDoc types as well.
+- `3.0.0` - \[Current\] Added ESM support alongside with CJS and IIFE support (@reesericci)
